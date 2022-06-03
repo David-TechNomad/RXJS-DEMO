@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+}
+
+.main_container {
+  max-width: 1000px;
+  width: 80%;
+  min-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 80px 0;
+}
+
+input.search {
+  border: none;
+  outline: none;
+  padding: 7.5px 15px;
+  color: #4a4a4a;
+  font-size: 16px;
+  background-color: #fff;
+  border-radius: 2px;
+  margin: 15px;
+  transition: all 400ms;
+  min-width: 200px;
+  height: 40px;
+  line-height: 40px;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 5px 5px 60px 0 rgba(0,0,0,.2);
+}
+
+input:focus {
+  box-shadow: 2px 2px 30px 0 rgba(0,0,0,.2);
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.content_container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  padding: 40px 0;
+}
+
+/* repos item */
+.repos_item {
+  border-radius: 2px;
+  margin: 30px 0;
+  transition: all 250ms;
+  box-shadow: 4px 4px 30px 0 rgba(0,0,0,.15);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:hover {
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  & .repos_item_wrapper {
+    padding: 15px 20px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+
+  & .repos_user_container {
+    margin-left: -50px;
+    text-align: left;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    & .user_header_container {
+      width: 50px;
+      height: 50px;
+      float: left;
+      position: relative;
+      box-shadow: 2px 2px 10px 0 rgba(0,0,0,.3);
+      border-radius: 50%;
+      border: 5px solid #fff;
+
+      & img.user_header {
+        width: 50px;
+        border-radius: 50%;
+        box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
+        transition: all 400ms;
+      }
+
+      &:hover {
+        & .user_infos_container {
+          opacity: 1;
+          visibility: visible;
+          z-index: 9;
+          transform: scale(1);
+        }
+
+        & img.user_header {
+          box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      & .user_infos_container {
+        position: absolute;
+        left: 0;
+        top: 45px;
+        z-index: -1;
+        opacity: 0;
+        visibility: hidden;
+        backface-visibility: hidden;
+        transform: scale(0.8);
+        transition: all .2s cubic-bezier(.55,0,.1,1);
+
+        & .user_infos_wrapper {
+          padding: 10px;
+          background-color: #fff;
+          margin-top: 10px;
+          border-radius: 2px;
+          position: relative;
+          min-height: 40px;
+          width: 300px;
+          box-shadow: 4px 4px 30px 0 rgba(0,0,0,.15);
+
+          &::before, &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            left: 16.5px;
+            position: absolute;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+          }
+
+          &::before {
+            border-bottom: 10px solid rgba(0, 0, 0, 0.5);
+            top: -10px;
+          }
+
+          &::after {
+            border-bottom: 10px solid #ffffff;
+            top: -10px;
+          }
+
+          & .info_loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+
+          & a.info_container {
+            color: #4990E2;
+
+            &:hover {
+              color: #1565C0;
+            }
+          }
+
+          & .info_container {
+            height: 25px;
+            line-height: 25px;
+            font-size: 14px;
+            color: #4a4a4a;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+            text-decoration: none;
+            transition: all 400ms;
+
+            &.info_bio {
+              white-space: normal;
+              height: auto;
+            }
+
+            &.info_social {
+              margin-top: 10px;
+              padding-top: 10px;
+              border-top: 1px solid #f0f0f0;
+              color: #9B9B9B;
+              font-size: 12px;
+
+              & i {
+                color: #9B9B9B;
+              }
+            }
+
+            & .info_icon {
+              width: 25px;
+              height: 25px;
+              position: relative;
+              display: inline-block;
+              float: left;
+
+              & i {
+                font-size: 18px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #737373;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .user_info {
+      display: inline-block;
+      float: left;
+      height: 50px;
+      line-height: 50px;
+      margin-left: 15px;
+      font-size: 16px;
+
+      & a {
+        text-decoration: none;
+        color: #4990E2;
+        transition: all 400ms;
+
+        &:hover {
+          color: #1565C0;
+        }
+      }
+
+      & .user_link {
+        color: #9B9B9B;
+      }
+    }
+  }
+
+  & .repos_info_container {
+    border-top: 1px solid #f0f0f0;
+    margin-top: 15px;
+    text-align: left;
+    line-height: 1.6em;
+
+    &::after {
+      content: '';
+      clear: both;
+      display: block;
+    }
+
+    & .repos_desc {
+      margin: 15px 0;
+      overflow: hidden;
+    }
+
+    & .repos_info {
+      width: 100%;
+      text-align: right;
+      color: #9B9B9B;
+      font-size: 12px;
+
+      &::after {
+        content: '';
+        clear: both;
+        display: block;
+      }
+
+      & .repos_language {
+        float: left;
+      }
+
+      & i {
+        color: #9B9B9B;
+      }
+    }
+  }
+}
