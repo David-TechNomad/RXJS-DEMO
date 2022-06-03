@@ -1,6 +1,6 @@
-# rxjs-demo
+# RXJS-DEMO
 
-通过构建一个简单的 github 应用，学习 RxJS 的快速入门教程。线上 DEMO 可戳 [https://dsh225.github.io/rxjs-demo](https://dsh225.github.io/rxjs-demo/)
+通过构建一个简单的 github 应用，学习 RxJS 的快速入门教程。线上 DEMO 可戳 [https://dsh225.github.io/RXJS-DEMO](https://dsh225.github.io/RXJS-DEMO/)
 
 ## 开始前的准备
 
@@ -9,8 +9,8 @@
 ## 本地跑起来
 
 ```bash
-$ git clone https://github.com/dsh225/rxjs-demo.git
-$ cd rxjs-demo
+$ git clone https://github.com/dsh225/RXJS-DEMO.git
+$ cd RXJS-DEMO
 $ npm i
 $ npm run dev-server
 ```
