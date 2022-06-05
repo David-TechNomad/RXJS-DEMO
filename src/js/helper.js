@@ -1,11 +1,12 @@
-import Rx from 'rx';
-import { polyfill } from 'es6-promise';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-import { TOKEN } from './const_value';
+import Rx from "rx";
+import { polyfill } from "es6-promise";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+import { TOKEN } from "./const_value";
 polyfill();
 
-const SEARCH_REPOS = 'https://api.github.com/search/repositories?sort=stars&order=desc&q=';
+const SEARCH_REPOS =
+  "https://api.github.com/search/repositories?sort=stars&order=desc&q=";
 const KB2MB = 0.0009765625;
 const KB2BYTES = 1024;
 
@@ -15,12 +16,12 @@ const formatRepoSize = (repoSize) => {
 
 export const formatRepoSizeAndUnit = (repoSize) => {
   if (repoSize < 1) {
-    return [formatRepoSize(repoSize * KB2BYTES), 'Bytes'];
+    return [formatRepoSize(repoSize * KB2BYTES), "Bytes"];
   }
   if (repoSize >= 1 / KB2MB) {
-    return [formatRepoSize(repoSize * KB2MB), 'MB'];
+    return [formatRepoSize(repoSize * KB2MB), "MB"];
   }
-  return [repoSize, 'KB'];
+  return [repoSize, "KB"];
 };
 
 const getReposPromise = (query) => {
@@ -38,7 +39,7 @@ const getReposPromise = (query) => {
         console.log(err);
         NProgress.done();
         resolve([]);
-      }
+      },
     });
   });
 };
@@ -49,16 +50,20 @@ const getUserPromise = (data) => {
     $.ajax({
       type: "GET",
       url: `${url}?access_token=${TOKEN}`,
+      beforeSend: function (request) {
+        // 如果后台没有跨域处理，这个自定义
+        request.setRequestHeader("access_token", TOKEN);
+      },
       success: (data) => {
         resolve({
           conatiner,
-          data
+          data,
         });
       },
       error: (err) => {
         console.log(err);
         reject(null);
-      }
+      },
     });
   });
 };
