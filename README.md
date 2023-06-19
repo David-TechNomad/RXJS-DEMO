@@ -26,3 +26,9 @@ $ npm run dev-server
 - `hover`到 avator 上之后异步获取用户信息
 
 ![fetch user info](./images/fetch_info.png)
+## RxJS框架介绍及使⽤详解
+https://www.kancloud.cn/dsh225/rxjs/3051043
+## 学习 RxJS 操作符
+https://rxjs-cn.github.io/learn-rxjs-operators/operators/creation/create.html
+## RxJS+React sample
+https://www.kancloud.cn/dsh225/rxjs/3057968
